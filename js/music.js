@@ -10,6 +10,18 @@ export function initMusic() {
   audio.volume = 0.4;
   audio.loop = true;
 
+  // Start downloading the song after all images have loaded so it's ready
+  // to play instantly when the user taps the music button.
+  if (document.readyState === 'complete') {
+    audio.preload = 'auto';
+    audio.load();
+  } else {
+    window.addEventListener('load', () => {
+      audio.preload = 'auto';
+      audio.load();
+    }, { once: true });
+  }
+
   btn.addEventListener('click', () => {
     userToggled = true;
     const playing = btn.classList.toggle('is-playing');
