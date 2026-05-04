@@ -36,7 +36,8 @@
 }
 
 /* ---------- Button ripple ---------- */
-.btn, .floating-btn, .contact__card { position: relative; overflow: hidden; }
+.btn, .contact__card { position: relative; overflow: hidden; }
+.floating-btn { overflow: hidden; }
 .ripple {
   position: absolute;
   border-radius: 50%;
