@@ -5,6 +5,7 @@ import { initCarousel } from './carousel.js';
 import { initMaps } from './maps.js';
 import { initShare } from './share.js';
 import { initMusic } from './music.js';
+import { initEasterEggs } from './easter-eggs.js';
 
 function initFadeIns() {
   const sections = document.querySelectorAll('[data-section]');
@@ -49,6 +50,7 @@ function boot() {
   initMusic();
   initFadeIns();
   initRipples();
+  initEasterEggs();
 }
 
 if (document.readyState === 'loading') {
