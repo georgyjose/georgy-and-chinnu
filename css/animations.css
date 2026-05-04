@@ -1,0 +1,7 @@
+@keyframes flip-in {
+  0% { transform: rotateX(-90deg); opacity: 0; }
+  100% { transform: rotateX(0); opacity: 1; }
+}
+.cd__num.flip {
+  animation: flip-in 350ms var(--easing);
+}
