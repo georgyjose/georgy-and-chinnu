@@ -439,6 +439,30 @@ body.locked { overflow: hidden; }
   color: var(--muted);
 }
 
+/* ---------- Hidden message tooltip ---------- */
+.hidden-msg {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 0.75rem;
+  max-width: 80%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+  z-index: 10;
+}
+.hidden-msg.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 /* ---------- Music button playing state ---------- */
 .floating-btn[data-music-toggle].is-playing {
   animation: pulse 1.6s ease-in-out infinite;
