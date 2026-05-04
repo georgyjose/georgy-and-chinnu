@@ -67,7 +67,7 @@ h1, h2, h3 {
   display: grid;
   place-items: center;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  z-index: 50;
+  z-index: 1000;
   transition: transform 200ms var(--easing), background var(--transition);
 }
 .floating-btn--right { right: calc(env(safe-area-inset-right, 0px) + clamp(1rem, 4vw, 1.5rem)); }
