@@ -57,6 +57,14 @@
   z-index: 200;
   overflow: hidden;
 }
+.floating-btn.hint-pulse {
+  animation: hint-pulse 1.6s ease-in-out 1;
+}
+@keyframes hint-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); }
+  50% { transform: scale(1.18); box-shadow: 0 8px 24px var(--accent); }
+}
+
 /* ---------- Dove ---------- */
 .dove {
   position: fixed;

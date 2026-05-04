@@ -214,5 +214,26 @@ registerEgg(() => {
   });
 });
 
+// #10 — Past 50% scroll → music button pulses once (only if untouched)
+registerEgg(() => {
+  const btn = document.querySelector('[data-music-toggle]');
+  if (!btn) return;
+  let pulsed = false;
+
+  function onScroll() {
+    if (pulsed || hasUserToggled()) return;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (max <= 0) return;
+    const pct = window.scrollY / max;
+    if (pct >= 0.5) {
+      pulsed = true;
+      btn.classList.add('hint-pulse');
+      setTimeout(() => btn.classList.remove('hint-pulse'), 1600);
+      window.removeEventListener('scroll', onScroll);
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+});
+
 // Re-export helpers so per-egg modules can import from one place
 export { burstAt, rainConfetti, fireworksAt, CONFIG, hasUserToggled };
