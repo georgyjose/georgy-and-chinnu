@@ -498,6 +498,29 @@ body.locked { overflow: hidden; }
   transform: translate(-50%, 0) scale(1);
 }
 
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  bottom: 6rem;
+  left: 50%;
+  transform: translate(-50%, 10px);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 250ms, transform 250ms;
+  z-index: 150;
+  pointer-events: none;
+}
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 /* ---------- Music button playing state ---------- */
 .floating-btn[data-music-toggle].is-playing {
   animation: pulse 1.6s ease-in-out infinite;

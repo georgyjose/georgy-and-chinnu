@@ -138,5 +138,31 @@ registerEgg(() => {
   });
 });
 
+// #7 — Triple-tap hero within 1s (Minions only) → po-ta-to toast
+registerEgg(() => {
+  const hero = document.querySelector('[data-hero]');
+  if (!hero) return;
+  let taps = [];
+
+  hero.addEventListener('click', () => {
+    if (document.documentElement.getAttribute('data-theme') !== 'minions') return;
+    const now = Date.now();
+    taps = taps.filter(t => now - t < 1000);
+    taps.push(now);
+    if (taps.length >= 3) {
+      taps = [];
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = 'po-ta-to 🥔';
+      document.body.appendChild(toast);
+      requestAnimationFrame(() => toast.classList.add('is-visible'));
+      setTimeout(() => {
+        toast.classList.remove('is-visible');
+        setTimeout(() => toast.remove(), 300);
+      }, 2000);
+    }
+  });
+});
+
 // Re-export helpers so per-egg modules can import from one place
 export { burstAt, rainConfetti, fireworksAt, CONFIG, hasUserToggled };
