@@ -15,7 +15,7 @@ export function initMusic() {
     const playing = btn.classList.toggle('is-playing');
     btn.setAttribute('aria-pressed', String(playing));
     if (playing) {
-      audio.play().catch(() => { /* placeholder or autoplay block — visual state still flips */ });
+      audio.play().catch((err) => console.warn('[music] play failed:', err));
     } else {
       audio.pause();
     }
