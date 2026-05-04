@@ -54,5 +54,21 @@ registerEgg(() => {
   hero.addEventListener('pointercancel', cancel);
 });
 
+// #3 — Scroll to footer → confetti rain (once per page load)
+registerEgg(() => {
+  const footer = document.querySelector('.footer');
+  if (!footer) return;
+  let fired = false;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !fired) {
+        fired = true;
+        rainConfetti({ count: 60 });
+      }
+    });
+  }, { threshold: 0.5 });
+  io.observe(footer);
+});
+
 // Re-export helpers so per-egg modules can import from one place
 export { burstAt, rainConfetti, fireworksAt, CONFIG, hasUserToggled };
