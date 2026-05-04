@@ -2,13 +2,17 @@ const STORAGE_KEY = 'theme';
 const VALID = ['classic', 'minions'];
 
 export function currentTheme() {
-  const t = localStorage.getItem(STORAGE_KEY);
-  return VALID.includes(t) ? t : 'classic';
+  try {
+    const t = localStorage.getItem(STORAGE_KEY);
+    return VALID.includes(t) ? t : 'classic';
+  } catch {
+    return 'classic';
+  }
 }
 
 export function setTheme(theme) {
   if (!VALID.includes(theme)) return;
-  localStorage.setItem(STORAGE_KEY, theme);
+  try { localStorage.setItem(STORAGE_KEY, theme); } catch { /* private mode */ }
   document.documentElement.setAttribute('data-theme', theme);
   document.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
 }
