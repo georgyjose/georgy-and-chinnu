@@ -1,0 +1,11 @@
+{
+  "name": "Georgy & Chinnu's Wedding",
+  "short_name": "G & C",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF7F0",
+  "theme_color": "#C9A96E",
+  "icons": [
+    { "src": "assets/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
