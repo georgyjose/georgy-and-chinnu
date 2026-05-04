@@ -529,3 +529,18 @@ body.locked { overflow: hidden; }
   display: inline-block;
   animation: spin-slow 6s linear infinite;
 }
+
+/* ---------- Accessibility ---------- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  z-index: 1000;
+  transition: top 200ms;
+}
+.skip-link:focus { top: 1rem; outline: 2px solid var(--fg); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
