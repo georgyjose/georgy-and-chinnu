@@ -164,5 +164,27 @@ registerEgg(() => {
   });
 });
 
+// #8 — Long-press theme toggle (Minions only) → banana fireworks
+registerEgg(() => {
+  const btn = document.querySelector('[data-theme-toggle]');
+  if (!btn) return;
+  let timer = null;
+
+  const start = () => {
+    timer = setTimeout(() => {
+      if (document.documentElement.getAttribute('data-theme') !== 'minions') return;
+      const rect = btn.getBoundingClientRect();
+      fireworksAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      if (navigator.vibrate) navigator.vibrate([15, 30, 15]);
+    }, 2000);
+  };
+  const cancel = () => { if (timer) { clearTimeout(timer); timer = null; } };
+
+  btn.addEventListener('pointerdown', start);
+  btn.addEventListener('pointerup', cancel);
+  btn.addEventListener('pointerleave', cancel);
+  btn.addEventListener('pointercancel', cancel);
+});
+
 // Re-export helpers so per-egg modules can import from one place
 export { burstAt, rainConfetti, fireworksAt, CONFIG, hasUserToggled };
