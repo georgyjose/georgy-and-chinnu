@@ -78,5 +78,39 @@ registerEgg(() => {
   });
 });
 
+// #5 — Konami tap pattern (TL → TR → BL → BR → center within 5s)
+registerEgg(() => {
+  const PATTERN = ['tl', 'tr', 'bl', 'br', 'c'];
+  const RESET_MS = 5000;
+  let history = [];
+  let timer = null;
+
+  function zoneOf(x, y) {
+    const w = window.innerWidth, h = window.innerHeight;
+    const horiz = x < w * 0.34 ? 'l' : x > w * 0.66 ? 'r' : 'c';
+    const vert = y < h * 0.34 ? 't' : y > h * 0.66 ? 'b' : 'c';
+    if (horiz === 'c' && vert === 'c') return 'c';
+    if (vert === 'c' || horiz === 'c') return null;
+    return vert + horiz;
+  }
+
+  document.addEventListener('pointerdown', (e) => {
+    const z = zoneOf(e.clientX, e.clientY);
+    if (!z) return;
+    if (z !== PATTERN[history.length]) {
+      history = z === PATTERN[0] ? [z] : [];
+    } else {
+      history.push(z);
+    }
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => { history = []; }, RESET_MS);
+    if (history.length === PATTERN.length) {
+      rainConfetti({ count: 100 });
+      if (navigator.vibrate) navigator.vibrate([20, 40, 20]);
+      history = [];
+    }
+  });
+});
+
 // Re-export helpers so per-egg modules can import from one place
 export { burstAt, rainConfetti, fireworksAt, CONFIG, hasUserToggled };
