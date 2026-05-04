@@ -3,6 +3,7 @@ import { initCountdown } from './countdown.js';
 import { initEntry } from './entry.js';
 import { initCarousel } from './carousel.js';
 import { initMaps } from './maps.js';
+import { initShare } from './share.js';
 
 function boot() {
   initEntry();
@@ -10,6 +11,7 @@ function boot() {
   initCountdown();
   initCarousel();
   initMaps();
+  initShare();
 }
 
 if (document.readyState === 'loading') {

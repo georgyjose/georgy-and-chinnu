@@ -417,3 +417,16 @@ body.locked { overflow: hidden; }
   text-transform: uppercase;
   color: var(--muted);
 }
+
+/* ---------- Share ---------- */
+.share { text-align: center; }
+.share__title {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  margin-bottom: 0.5rem;
+  color: var(--fg);
+}
+.share__sub {
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
