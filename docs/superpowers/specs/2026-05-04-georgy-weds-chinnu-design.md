@@ -26,7 +26,7 @@ A single-page mobile-first wedding invitation website for Georgy & Chinnu, hoste
 
 - **Stack:** Plain HTML + CSS + vanilla JavaScript. No framework, no bundler, no build step.
 - **Repo location:** `/Users/georgyjose/Projects/georgy-weds-chinnu`
-- **Hosting:** GitHub Pages, default repo URL `https://georgyjose007.github.io/georgy-weds-chinnu/`. Custom domain to be wired later — share URL lives in one config constant.
+- **Hosting:** GitHub Pages, served at custom domain `https://georgyandchinnu.com` (CNAME wired into the repo via a `CNAME` file at root). Default repo URL `https://georgyjose007.github.io/georgy-weds-chinnu/` remains as a fallback.
 - **Deploy flow:** push to `main`; GitHub Pages serves `index.html` from repo root. Include `.nojekyll` so Pages doesn't strip underscored files.
 - **Mobile-first** with responsive breakpoints up to desktop.
 
@@ -36,6 +36,7 @@ A single-page mobile-first wedding invitation website for Georgy & Chinnu, hoste
 georgy-weds-chinnu/
 ├── index.html
 ├── .nojekyll
+├── CNAME                      # Contains: georgyandchinnu.com
 ├── manifest.json              # PWA basics (homescreen icon, theme color)
 ├── README.md
 ├── css/
@@ -83,7 +84,7 @@ export const CONFIG = {
     mapsUrl: 'https://maps.app.goo.gl/c1CVMrJhTMwCTkde9',
   },
   contact: { name: 'Anna', phone: '+918078135442' },
-  shareUrl: 'https://georgyjose007.github.io/georgy-weds-chinnu/',
+  shareUrl: 'https://georgyandchinnu.com',
   shareMessage: (url) =>
     `Georgy & Chinnu's Wedding 💍\n\nDec 1, 2025\n\nJoin us ❤️\n\n${url}`,
   hiddenMessage: 'From the day we met, it was always you ❤️',
@@ -189,7 +190,7 @@ Single `<a href="..." target="_blank" rel="noopener">` tag. No JS sniffing neede
 
   Join us ❤️
 
-  https://georgyjose007.github.io/georgy-weds-chinnu/
+  https://georgyandchinnu.com
   ```
 - If `navigator.share` exists, prefer the native share sheet (gives Telegram/SMS/etc. too) — falls back to WhatsApp deeplink otherwise
 
@@ -236,7 +237,7 @@ Each module exports an `init()` that's idempotent and safe to call once.
 - Service worker / offline support
 - Analytics or tracking
 - Real-time RSVP
-- Custom domain configuration (deferred — change `CONFIG.shareUrl` when ready)
+- DNS / domain registrar configuration (the user owns `georgyandchinnu.com`; spec assumes the DNS A/CNAME records pointing to GitHub Pages are configured separately)
 - Real photos / song (placeholders ship; user swaps files later)
 - Internationalization
 
