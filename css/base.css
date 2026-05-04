@@ -374,3 +374,46 @@ body.locked { overflow: hidden; }
 }
 .btn--primary:active { transform: scale(0.97); }
 .event { display: flex; flex-direction: column; }
+
+/* ---------- Contact ---------- */
+.contact { text-align: center; }
+.contact__title {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  margin-bottom: 0.5rem;
+  color: var(--fg);
+}
+.contact__sub {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+.contact__card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  transition: transform 200ms var(--easing), background var(--transition);
+}
+.contact__card:active { transform: scale(0.98); }
+.contact__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--fg);
+  margin-bottom: 0.25rem;
+}
+.contact__phone {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+.contact__cta {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
