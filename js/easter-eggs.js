@@ -112,5 +112,31 @@ registerEgg(() => {
   });
 });
 
+// #6 — Tap names 3× within 1s (Minions only) → BELLO speech bubble
+registerEgg(() => {
+  const names = document.querySelector('[data-names]');
+  if (!names) return;
+  let taps = [];
+
+  names.addEventListener('click', () => {
+    if (document.documentElement.getAttribute('data-theme') !== 'minions') return;
+    const now = Date.now();
+    taps = taps.filter(t => now - t < 1000);
+    taps.push(now);
+    if (taps.length >= 3) {
+      taps = [];
+      const bubble = document.createElement('div');
+      bubble.className = 'speech-bubble';
+      bubble.textContent = 'BELLO! 👋';
+      names.appendChild(bubble);
+      requestAnimationFrame(() => bubble.classList.add('is-visible'));
+      setTimeout(() => {
+        bubble.classList.remove('is-visible');
+        setTimeout(() => bubble.remove(), 300);
+      }, 1800);
+    }
+  });
+});
+
 // Re-export helpers so per-egg modules can import from one place
 export { burstAt, rainConfetti, fireworksAt, CONFIG, hasUserToggled };
