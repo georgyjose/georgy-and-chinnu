@@ -23,3 +23,28 @@
   from { transform: rotate(0); }
   to { transform: rotate(360deg); }
 }
+
+/* ---------- Section fade-ins ---------- */
+[data-section] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms var(--easing), transform 600ms var(--easing);
+}
+[data-section].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Button ripple ---------- */
+.btn, .floating-btn, .contact__card { position: relative; overflow: hidden; }
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(0);
+  animation: ripple 600ms ease-out;
+  pointer-events: none;
+}
+@keyframes ripple {
+  to { transform: scale(2.5); opacity: 0; }
+}
