@@ -1,0 +1,12 @@
+html[data-theme="classic"] {
+  --bg: #FBF7F0;
+  --fg: #2A2A2A;
+  --accent: #C9A96E;
+  --accent-2: #7A8B7A;
+  --muted: rgba(42, 42, 42, 0.6);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --particle-color: rgba(201, 169, 110, 0.5);
+  --confetti-glyph: '❤';
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}

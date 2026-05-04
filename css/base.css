@@ -52,3 +52,23 @@ h1, h2, h3 {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------- Floating buttons ---------- */
+.floating-btn {
+  position: fixed;
+  bottom: clamp(1rem, 4vw, 1.5rem);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 1.25rem;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 50;
+  transition: transform 200ms var(--easing), background var(--transition);
+}
+.floating-btn--right { right: clamp(1rem, 4vw, 1.5rem); }
+.floating-btn--left { left: clamp(1rem, 4vw, 1.5rem); }
+.floating-btn:active { transform: scale(0.92); }

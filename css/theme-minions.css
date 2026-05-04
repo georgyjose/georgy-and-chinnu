@@ -1,0 +1,12 @@
+html[data-theme="minions"] {
+  --bg: #FFD93D;
+  --fg: #1A1A1A;
+  --accent: #3A6EA5;
+  --accent-2: #FFFFFF;
+  --muted: rgba(26, 26, 26, 0.7);
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Fredoka', system-ui, sans-serif;
+  --particle-color: rgba(58, 110, 165, 0.4);
+  --confetti-glyph: '🍌';
+  --easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+}

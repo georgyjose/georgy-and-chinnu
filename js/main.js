@@ -1,2 +1,11 @@
-// Boot sequence — populated in later tasks
-console.log('Wedding site loaded');
+import { initThemeToggle } from './theme.js';
+
+function boot() {
+  initThemeToggle();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
+}

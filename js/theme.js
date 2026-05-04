@@ -1,0 +1,29 @@
+const STORAGE_KEY = 'theme';
+const VALID = ['classic', 'minions'];
+
+export function currentTheme() {
+  const t = localStorage.getItem(STORAGE_KEY);
+  return VALID.includes(t) ? t : 'classic';
+}
+
+export function setTheme(theme) {
+  if (!VALID.includes(theme)) return;
+  localStorage.setItem(STORAGE_KEY, theme);
+  document.documentElement.setAttribute('data-theme', theme);
+  document.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+}
+
+export function toggleTheme() {
+  const next = currentTheme() === 'classic' ? 'minions' : 'classic';
+  setTheme(next);
+  return next;
+}
+
+export function initThemeToggle() {
+  const btn = document.querySelector('[data-theme-toggle]');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    toggleTheme();
+    if (navigator.vibrate) navigator.vibrate(10);
+  });
+}
