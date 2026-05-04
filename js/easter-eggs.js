@@ -186,5 +186,33 @@ registerEgg(() => {
   btn.addEventListener('pointercancel', cancel);
 });
 
+// #9 — Triple-tap church icon (Classic only) → dove flies across
+registerEgg(() => {
+  const icon = document.querySelector('[data-church-icon]');
+  if (!icon) return;
+  let taps = [];
+
+  icon.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (document.documentElement.getAttribute('data-theme') !== 'classic') return;
+    const now = Date.now();
+    taps = taps.filter(t => now - t < 1000);
+    taps.push(now);
+    if (taps.length >= 3) {
+      taps = [];
+      const dove = document.createElement('div');
+      dove.className = 'dove';
+      dove.innerHTML = `
+        <svg viewBox="0 0 64 64" width="64" height="64" fill="#fff" stroke="rgba(0,0,0,0.2)" stroke-width="1">
+          <path d="M8 36 Q20 18 36 26 L48 16 L46 28 L56 32 L44 36 L36 50 Q22 52 14 44 Z"/>
+          <circle cx="40" cy="24" r="2" fill="#000"/>
+        </svg>
+      `;
+      document.body.appendChild(dove);
+      setTimeout(() => dove.remove(), 3500);
+    }
+  });
+});
+
 // Re-export helpers so per-egg modules can import from one place
 export { burstAt, rainConfetti, fireworksAt, CONFIG, hasUserToggled };
