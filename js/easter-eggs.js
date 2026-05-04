@@ -70,5 +70,13 @@ registerEgg(() => {
   io.observe(footer);
 });
 
+// #4 — Countdown hits 0 → auto-confetti
+registerEgg(() => {
+  document.addEventListener('countdown:zero', () => {
+    rainConfetti({ count: 80 });
+    setTimeout(() => rainConfetti({ count: 80 }), 800);
+  });
+});
+
 // Re-export helpers so per-egg modules can import from one place
 export { burstAt, rainConfetti, fireworksAt, CONFIG, hasUserToggled };
