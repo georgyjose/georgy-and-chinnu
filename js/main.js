@@ -4,6 +4,7 @@ import { initEntry } from './entry.js';
 import { initCarousel } from './carousel.js';
 import { initMaps } from './maps.js';
 import { initShare } from './share.js';
+import { initMusic } from './music.js';
 
 function boot() {
   initEntry();
@@ -12,6 +13,7 @@ function boot() {
   initCarousel();
   initMaps();
   initShare();
+  initMusic();
 }
 
 if (document.readyState === 'loading') {

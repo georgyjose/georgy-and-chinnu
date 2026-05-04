@@ -430,3 +430,20 @@ body.locked { overflow: hidden; }
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
 }
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  padding: 2.5rem var(--pad);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---------- Music button playing state ---------- */
+.floating-btn[data-music-toggle].is-playing {
+  animation: pulse 1.6s ease-in-out infinite;
+}
+.floating-btn[data-music-toggle].is-playing .music-icon {
+  display: inline-block;
+  animation: spin-slow 6s linear infinite;
+}
