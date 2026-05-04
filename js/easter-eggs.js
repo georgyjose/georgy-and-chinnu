@@ -14,5 +14,15 @@ export function initEasterEggs() {
   });
 }
 
+// #1 — Tap names → heart burst
+registerEgg(() => {
+  const names = document.querySelector('[data-names]');
+  if (!names) return;
+  names.addEventListener('click', (e) => {
+    burstAt(e.clientX, e.clientY, 14);
+    if (navigator.vibrate) navigator.vibrate(8);
+  });
+});
+
 // Re-export helpers so per-egg modules can import from one place
 export { burstAt, rainConfetti, fireworksAt, CONFIG, hasUserToggled };
