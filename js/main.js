@@ -1,7 +1,9 @@
 import { initThemeToggle } from './theme.js';
 import { initCountdown } from './countdown.js';
+import { initEntry } from './entry.js';
 
 function boot() {
+  initEntry();
   initThemeToggle();
   initCountdown();
 }
