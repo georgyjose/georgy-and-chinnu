@@ -57,6 +57,22 @@
   z-index: 200;
   overflow: hidden;
 }
+.idle-heart {
+  position: fixed;
+  bottom: -2rem;
+  font-size: 1.5rem;
+  pointer-events: none;
+  z-index: 180;
+  opacity: 0;
+  animation: float-up 6s ease-out forwards;
+  color: var(--accent);
+}
+@keyframes float-up {
+  0%   { transform: translateY(0); opacity: 0; }
+  15%  { opacity: 0.85; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
 .floating-btn.hint-pulse {
   animation: hint-pulse 1.6s ease-in-out 1;
 }

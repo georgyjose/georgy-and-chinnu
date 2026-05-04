@@ -235,5 +235,27 @@ registerEgg(() => {
   window.addEventListener('scroll', onScroll, { passive: true });
 });
 
+// #11 — Idle 30s → tiny floating heart drifts up
+registerEgg(() => {
+  let timer;
+  function reset() {
+    clearTimeout(timer);
+    timer = setTimeout(spawn, 30000);
+  }
+  function spawn() {
+    const heart = document.createElement('span');
+    heart.className = 'idle-heart';
+    heart.textContent = document.documentElement.getAttribute('data-theme') === 'minions' ? '🍌' : '❤';
+    heart.style.left = `${10 + Math.random() * 80}%`;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+    reset();
+  }
+  ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(ev => {
+    window.addEventListener(ev, reset, { passive: true });
+  });
+  reset();
+});
+
 // Re-export helpers so per-egg modules can import from one place
 export { burstAt, rainConfetti, fireworksAt, CONFIG, hasUserToggled };
