@@ -99,11 +99,11 @@ Swap domain, change wedding time, update message — all in this one file.
 
 ## Page sections (top → bottom)
 
-1. **Entry overlay** — Full-screen, ivory/yellow card depending on theme. "You're invited 💌" + "Tap to enter" pill. Soft particles drift in background. Tap anywhere → fades out (300ms) and reveals page. Body scroll locked until tapped. Skipped on subsequent visits in the same session (sessionStorage flag) so refreshing doesn't re-gate.
+1. **Entry overlay** — Full-screen, ivory/yellow card depending on theme. "You're invited 💌" + "Tap to enter" pill. Soft particles drift in background, theme-aware (gold dust in classic, mini bananas in minions). Tap anywhere on the overlay → fades out (300ms) and reveals page. Body scroll locked until tapped. Skipped on subsequent visits in the same session (sessionStorage flag) so refreshing doesn't re-gate.
 
 2. **Hero** — Full viewport height. Hero photo as background with gradient overlay (theme-colored, dark at bottom for text legibility). Names "Georgy & Chinnu" in display font, then "Dec 1, 2025", then the flip-style countdown.
 
-3. **Our Story / Photos** — One feature photo full-width, then a horizontally swipeable carousel of 3-6 photos with tiny captions. Swipe gestures on touch, arrow keys on desktop, dot indicators below.
+3. **Our Story / Photos** — One feature photo full-width, then a horizontally swipeable carousel. Ships with 6 placeholder slots (gradient SVGs); user replaces each file in `assets/photos/` to update. Tiny captions per slide come from `CONFIG.photoCaptions`. Swipe gestures on touch, arrow keys on desktop, dot indicators below.
 
 4. **Event Details** — Date, time, venue name, large "Get Directions 🚗" button that links to the Google Maps universal URL. A small church icon sits next to the venue name (it's the trigger for easter egg #9).
 
@@ -176,7 +176,7 @@ Single `<a href="..." target="_blank" rel="noopener">` tag. No JS sniffing neede
 - Tap → play; icon swaps + subtle pulse animation while playing
 - Tap again → pause; icon reverts
 - Default `volume = 0.4`
-- Placeholder song until real one provided; swap by replacing `assets/audio/song.mp3`
+- Placeholder is a tiny silent MP3 (~1s, loops) so the toggle is functional without crashing; swap by replacing `assets/audio/song.mp3` with the real song file (same filename) — no code change needed
 
 ## WhatsApp share
 
